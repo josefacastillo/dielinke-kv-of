@@ -217,7 +217,16 @@ export const Posts: CollectionConfig<'posts'> = {
     slugField(),
   ],
   hooks: {
-    afterChange: [revalidatePost],
+    afterChange: [
+      revalidatePost,
+      async ({ req: { payload }, collection }) => {
+        await payload.sendEmail({
+          to: 'castillo.josefa@pm.me',
+          subject: `Change made in ${collection.slug}`,
+          text: `Change made in ${collection.slug}`,
+        })
+      },
+    ],
     afterRead: [populateAuthors],
     afterDelete: [revalidateDelete],
   },

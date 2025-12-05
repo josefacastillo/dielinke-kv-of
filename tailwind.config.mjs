@@ -92,10 +92,32 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        // Custom Sidebar Colors (from your original config)
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar-background))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: 'hsl(var(--sidebar-primary))',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+          accent: 'hsl(var(--sidebar-accent))',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
+        },
+        linke: {
+          darkgreen: 'hsl(var(--linke-darkgreen))',
+          turquoise: 'hsl(var(--linke-turquoise))',
+          violet: 'hsl(var(--linke-violet))',
+          pink: 'hsl(var(--linke-pink))',
+          blue: 'hsl(var(--linke-blue))',
+          lightblue: 'hsl(var(--linke-lightblue))',
+        },
+        'pure-red': '#ff0000',
+        'petrol-dark': '#002932',
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        heading: ['var(--font-heading)', 'sans-serif'],
+        body: ['var(--font-body)', 'sans-serif'],
+        sans: ['var(--font-heading)', 'var(--font-body)', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

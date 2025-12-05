@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 import { cn } from '@/utilities/ui'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
+import { Inter, Work_Sans } from 'next/font/google'
+
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -15,12 +15,16 @@ import { draftMode } from 'next/headers'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import { CookieBanner } from '@/components/ui/CookieBanner'
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-body' })
+const workSans = Work_Sans({ subsets: ['latin'], variable: '--font-heading' })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html className={cn(workSans.variable, inter.variable)} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
@@ -37,6 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Header />
           {children}
           <Footer />
+          <CookieBanner />
         </Providers>
       </body>
     </html>
@@ -46,8 +51,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
   openGraph: mergeOpenGraph(),
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
-  },
+  // twitter: {
+  //   card: 'summary_large_image',
+  //   creator: '@payloadcms',
+  // },
 }

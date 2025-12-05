@@ -10,14 +10,33 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 const nextConfig = {
   images: {
     remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
-
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', ''),
-        }
-      }),
+      // 1. Allow Localhost with Port 3000
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/api/**', // Allow API routes
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/media/**', // Allow media folder
+      },
+      // 2. Allow your Production Domain
+      {
+        protocol: 'https',
+        hostname: 'dielinke-kv-of.vercel.app',
+        port: '',
+        pathname: '/**',
+      },
+      // 3. Allow Vercel Blob Storage
+      {
+        protocol: 'https',
+        hostname: 'public.blob.vercel-storage.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   webpack: (webpackConfig) => {

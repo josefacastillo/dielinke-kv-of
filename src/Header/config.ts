@@ -13,16 +13,32 @@ export const Header: GlobalConfig = {
       name: 'navItems',
       type: 'array',
       fields: [
-        link({
-          appearances: false,
-        }),
+        // 1. The Top Label
+        {
+          name: 'label',
+          type: 'text',
+          required: true,
+          admin: {
+            placeholder: 'Top level label',
+          },
+        },
+        // 2. The Dropdown Menu
+        {
+          name: 'submenu',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+        },
       ],
       maxRows: 6,
       admin: {
         initCollapsed: true,
-        components: {
-          RowLabel: '@/Header/RowLabel#RowLabel',
-        },
+        // components: {
+        //   RowLabel: '@/Header/RowLabel#RowLabel',
+        // },
       },
     },
   ],
