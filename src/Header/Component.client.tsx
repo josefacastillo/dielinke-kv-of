@@ -46,7 +46,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               <Logo />
             </Link>
 
-            <HeaderNav data={data} className="hidden lg:flex items-center gap-6" />
+            <HeaderNav
+              data={data}
+              className="hidden font-heading font-semibold lg:flex items-center gap-6"
+            />
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggle />

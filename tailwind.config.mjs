@@ -89,6 +89,9 @@ const config = {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+        'darker-secondary': {
+          DEFAULT: 'hsl(var(--darker-secondary))',
+        },
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
