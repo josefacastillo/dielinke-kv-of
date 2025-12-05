@@ -19,25 +19,11 @@ interface HeaderClientProps {
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  /* Storing the value in a useState to avoid hydration errors */
-  const [theme, setTheme] = useState<string | null>(null)
-  const { headerTheme, setHeaderTheme } = useHeaderTheme()
-  const pathname = usePathname()
 
-  useEffect(() => {
-    setHeaderTheme(null)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
-
-  useEffect(() => {
-    if (headerTheme !== undefined && headerTheme !== theme) setTheme(headerTheme)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [headerTheme])
 
   return (
     <header
-      className="sticky z-20 top-0 backdrop-blur-sm bg-background/90 h-16   "
-      {...(theme ? { 'data-theme': theme } : {})}
+      className="sticky z-20 top-0 backdrop-blur-sm bg-background/90 h-16"
     >
       <div className="container pb-8">
         <div className="flex items-center justify-between h-16">
