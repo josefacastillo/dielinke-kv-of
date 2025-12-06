@@ -1669,26 +1669,71 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  navItems?:
+  brand: {
+    title: string;
+    description?: string | null;
+    socialLinks?:
+      | {
+          platform?: ('facebook' | 'instagram' | 'twitter') | null;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  navColumns?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
+        title: string;
+        navItems?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
+  contact?: {
+    title?: string | null;
+    address?: string | null;
+    email?: string | null;
+  };
+  legal?: {
+    copyright?: string | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1726,19 +1771,64 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  brand?:
     | T
     | {
-        link?:
+        title?: T;
+        description?: T;
+        socialLinks?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
+              platform?: T;
               url?: T;
-              label?: T;
+              id?: T;
+            };
+      };
+  navColumns?:
+    | T
+    | {
+        title?: T;
+        navItems?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
         id?: T;
+      };
+  contact?:
+    | T
+    | {
+        title?: T;
+        address?: T;
+        email?: T;
+      };
+  legal?:
+    | T
+    | {
+        copyright?: T;
+        links?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

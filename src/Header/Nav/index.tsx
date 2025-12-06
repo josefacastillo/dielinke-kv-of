@@ -56,7 +56,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; className: string }> = ({
                       key={j}
                       {...link}
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
-                      appearance="default"
+                      appearance="link"
                     />
                   ))}
                 </div>

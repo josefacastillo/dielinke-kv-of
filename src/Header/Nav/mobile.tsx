@@ -50,7 +50,7 @@ export const HeaderMobileNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                       key={j}
                       {...link}
                       className="block py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                      appearance="default"
+                      appearance="link"
                     />
                   ))}
                 </div>

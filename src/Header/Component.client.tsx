@@ -1,8 +1,6 @@
 'use client'
-import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import type { Header } from '@/payload-types'
 
@@ -43,7 +41,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               <span className="sr-only">Search</span>
               <SearchIcon className="w-5 ghost hover:text-primary" />
             </Link>
-            {/* Mobile Sheet/Menu (Now flat) */}
             <Sheet>
               <SheetTrigger asChild className="lg:hidden">
                 <Button variant="ghost" size="icon">
